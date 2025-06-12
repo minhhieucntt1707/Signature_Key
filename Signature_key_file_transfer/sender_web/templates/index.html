@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sender Web - Truyền File Ký Số</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Sender - Gửi File Có Ký Số</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST" enctype="multipart/form-data">
+        <label>IP máy nhận:</label><br>
+        <input type="text" name="ip" required><br><br>
+        <label>Chọn file:</label><br>
+        <input type="file" name="file" required><br><br>
+        <button type="submit">Gửi File</button>
+    </form>
+</body>
+</html>
